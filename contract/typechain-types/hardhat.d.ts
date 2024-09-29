@@ -50,6 +50,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ICredLink__factory>;
     getContractFactory(
+      name: "IERC20Token",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20Token__factory>;
+    getContractFactory(
       name: "Errors",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Errors__factory>;
@@ -104,6 +108,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.ICredLink>;
     getContractAt(
+      name: "IERC20Token",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Token>;
+    getContractAt(
       name: "Errors",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -151,6 +160,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ICredLink>;
     deployContract(
+      name: "IERC20Token",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20Token>;
+    deployContract(
       name: "Errors",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Errors>;
@@ -204,6 +217,11 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ICredLink>;
+    deployContract(
+      name: "IERC20Token",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20Token>;
     deployContract(
       name: "Errors",
       args: any[],

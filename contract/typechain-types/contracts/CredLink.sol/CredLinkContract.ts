@@ -261,7 +261,7 @@ export interface CredLinkContract extends BaseContract {
 
   applyForLoan: TypedContractMethod<
     [_lender: AddressLike, _duration: BigNumberish, _amount: BigNumberish],
-    [CredLinkContract.BorrowerDetailsStructOutput],
+    [void],
     "nonpayable"
   >;
 
@@ -305,7 +305,7 @@ export interface CredLinkContract extends BaseContract {
     nameOrSignature: "applyForLoan"
   ): TypedContractMethod<
     [_lender: AddressLike, _duration: BigNumberish, _amount: BigNumberish],
-    [CredLinkContract.BorrowerDetailsStructOutput],
+    [void],
     "nonpayable"
   >;
   getFunction(
