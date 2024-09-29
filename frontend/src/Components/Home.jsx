@@ -8,14 +8,14 @@ const Home = () => {
   const handleGetLoanClick = () => {
     toast.info("Connect your MetaMask wallet");
     setTimeout(() => {
-      navigate('/borrowersDashboard');
+      navigate('/');
     }, 2000);
   }
 
     const handleLendClick = () => {
       toast.info("Connect your MetaMask wallet");
       setTimeout(() => {
-        navigate('/lenderDashboard');
+        navigate('/');
       }, 2000);
     }
    return (

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import vector2 from "../assets/svg/Ellipse.svg"
 import { ethers } from "ethers";
@@ -697,8 +698,9 @@ const ProvideLoanModal = () => {
     console.log("Token approval successful");
  
     const depositTx = await credlinkContract.lenderDeposit(amount, {
-      gasLimit: 100000
+      gasLimit: 1000000
     });
+    
     await depositTx.wait();
   
     alert("deposit successful");
@@ -771,3 +773,4 @@ const ProvideLoanModal = () => {
 };
 
 export default ProvideLoanModal;
+

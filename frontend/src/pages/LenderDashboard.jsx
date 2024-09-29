@@ -31,10 +31,12 @@ const LenderDashboard = () => {
             </span>
           </button>
           </Link>
+          <Link to="/BorrowersDashboard">
             <button className="bg-[#584BFF] text-white flex px-4 py-6 items-center gap-2  rounded-3xl">
               view Aproved Borrowers<img src={vector1} alt="Limit Icon" />
             </button>
-            <Link to="/borrowersDashboard">
+          </Link>
+            <Link to="/applyloan">
             <button className="bg-[#584BFF] text-white px-4 py-6 flex items-center gap-2  rounded-3xl">
               Source for Loan <img src={vector3} alt="Withdraw Icon" />
             </button>

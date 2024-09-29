@@ -1,3 +1,4 @@
+
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
@@ -14,9 +15,16 @@ const BorrowersDashboard = ({ contractAddress, contractAbi }) => {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(contractAddress, contractAbi, signer);
 
+      // Fetching approved borrowers
       const approvedBorrowers = await contract.viewApproveBorrowers(); 
-      setBorrowers(approvedBorrowers); 
-      console.log(approvedBorrowers);
+      console.log("Approved Borrowers:", approvedBorrowers); // Logging returned value
+      
+      // Check if the returned value is an array
+      if (Array.isArray(approvedBorrowers)) {
+        setBorrowers(approvedBorrowers); 
+      } else {
+        throw new Error("Returned value is not an array");
+      }
       
       setLoading(false); 
     } catch (error) {
@@ -26,7 +34,6 @@ const BorrowersDashboard = ({ contractAddress, contractAbi }) => {
     }
   };
 
-  
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: "eth_requestAccounts" })
@@ -42,9 +49,8 @@ const BorrowersDashboard = ({ contractAddress, contractAbi }) => {
   }, []);
 
   return (
-    <div className="dashboard">
+    <div className="dashboard h-[75vh] ">
       <h2>Approved Borrowers List</h2>
-      
       <ToastContainer />
       {loading ? (
         <p>Loading borrowers...</p>
