@@ -4,6 +4,7 @@ import Metamask from "../assets/svg/metamask.svg";
 import { ethers } from "ethers";
 import { useNavigate } from 'react-router';
 import { toast } from 'react-dom';
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -28,9 +29,11 @@ const Navbar = () => {
   return (
     <div className="w-full flex flex-col md:flex-row justify-center items-center pt-10 md:pt-14 p-5">
   <div className="w-full md:w-4/5 flex flex-row justify-between items-center">
-    <div className="w-48 h-8">
+  <Link to="/">
+    <button className="w-48 h-8">
       <img src={MySvgIcon} alt="logo" className="w-full h-full" />
-    </div>
+    </button>
+  </Link>
     
     <div className="hidden md:block">
       <img src={Line} alt="line image" />

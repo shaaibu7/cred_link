@@ -1,6 +1,23 @@
-
 import Guide from "./Guide";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleGetLoanClick = () => {
+    toast.info("Connect your MetaMask wallet");
+    setTimeout(() => {
+      navigate('/borrowersDashboard');
+    }, 2000);
+  }
+
+    const handleLendClick = () => {
+      toast.info("Connect your MetaMask wallet");
+      setTimeout(() => {
+        navigate('/lenderDashboard');
+      }, 2000);
+    }
    return (
      <div className="text-3xl font-extrabold items-center h-full  w-[100%]  flex flex-col mt-[10%]">
        <div className="w-[80%] flex flex-col justify-center align-middle items-center">
@@ -15,8 +32,9 @@ const Home = () => {
        <div className="text-white flex justify-center align-middle flex-col items-center mt-7">
          <h2 className="text-sm text-white">Get Started</h2>
          <div className="mt-6">
-           <button className="bg-[#3E8BFF] text-white rounded-[72px] text-xs p-4 font-normal w-40 h-13 text-center">Get A Loan</button>
-           <button className="bg-[#3E8BFF] text-white rounded-[72px] text-xs p-4 font-normal w-40 h-13 text-center ml-3">Lend</button>
+           <button onClick={handleGetLoanClick} className="bg-[#3E8BFF] text-white rounded-[72px] text-xs p-4 font-normal w-40 h-13 text-center">Get A Loan</button>
+           <button  onClick={handleLendClick}  className="bg-[#3E8BFF] text-white rounded-[72px] text-xs p-4 font-normal w-40 h-13 text-center ml-3">Lend</button>
+         <ToastContainer/>
          </div>
        </div>
 
@@ -28,4 +46,4 @@ const Home = () => {
    );
   }
   
-  export default Home
+  export default Home;

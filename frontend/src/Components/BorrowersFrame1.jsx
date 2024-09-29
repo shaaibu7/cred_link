@@ -63,8 +63,8 @@ const BorrowersFrame1 = () => {
             <form className="flex flex-col"onSubmit={handleSubmit(onsubmit)}> 
               <div className="">
                 <label className="block text-sm font-medium text-white">
-                  Amount:
                 </label>
+                  Amount:
                 <input
                   type="text"
                   {...register("amount", { required: "Amount is required" })}
