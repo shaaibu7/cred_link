@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import  { useState } from "react";
 import { ethers } from "ethers";
 import { ToastContainer, toast } from "react-toastify";
