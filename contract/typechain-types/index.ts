@@ -24,6 +24,8 @@ export type { CredLinkToken } from "./contracts/CredLinkToken";
 export { CredLinkToken__factory } from "./factories/contracts/CredLinkToken__factory";
 export type { ICredLink } from "./contracts/interfaces/ICredLink";
 export { ICredLink__factory } from "./factories/contracts/interfaces/ICredLink__factory";
+export type { IERC20Token } from "./contracts/interfaces/IERC20.sol/IERC20Token";
+export { IERC20Token__factory } from "./factories/contracts/interfaces/IERC20.sol/IERC20Token__factory";
 export type { Errors } from "./contracts/lib/Errors";
 export { Errors__factory } from "./factories/contracts/lib/Errors__factory";
 export type { Events } from "./contracts/lib/Events";
