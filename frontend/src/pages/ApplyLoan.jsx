@@ -9,7 +9,7 @@ const ApplyForLoan = () => {
   const [lender, setLender] = useState("");
   const [duration, setDuration] = useState("");
   const [amount, setAmount] = useState("");
-  const contractAddress = "0x422da85a9D29d9888d33e5a6B5DaA27206bB592E";
+  const contractAddress = "0xed6f474c68a66138Deb31CF502d17e7eF798eb93";
   // Function to apply for a loan
   const applyForLoan = async () => {
     if (!window.ethereum) {
@@ -54,7 +54,7 @@ const ApplyForLoan = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-lg mx-auto mt-10 p-20 bg-white  shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Apply for a Loan</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">

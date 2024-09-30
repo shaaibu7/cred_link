@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import vector2 from "../assets/svg/Ellipse.svg";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import vector3 from "../assets/Vector (2).svg";
 import { ethers } from "ethers";
 import { Circles } from "react-loader-spinner";
 import { toast } from "react-toastify";
@@ -654,7 +655,6 @@ const ProvideLoanModal = () => {
     isSuccess,
     status,
     failureReason,
-    error,
     variables,
     data: hash,
   } = useWriteContract();
@@ -663,7 +663,7 @@ const ProvideLoanModal = () => {
 
   const openModal = () => setIsOpen(true);
   const { connectors, connect } = useConnect();
-  const { isConnected, connector, address } = useAccount();
+  const { isConnected,  address } = useAccount();
   const [current_allowance, set_current_allowance] = useState(0);
 
   const { data: allowance } = useReadContract({
@@ -773,10 +773,10 @@ const ProvideLoanModal = () => {
     <div>
       {/* Button to Open Modal */}
       <button
-        className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2"
+        className="rounded-3xl   w-[800px] h-[400px] font-semibold text-7xl text-white flex items-center justify-center gap-2 px-3 py-2"
         onClick={openModal}
       >
-        Provide Loan <img src={vector2} alt="Limit Icon 2" />
+       <p className="bg-[#584BFF] py-6 px-4 rounded-3xl flex justify-center items-center gap-4">Provide Loan <img src={vector3} alt="Limit Icon 2" /> </p> 
       </button>
 
       {/* Modal */}
@@ -829,7 +829,7 @@ const ProvideLoanModal = () => {
                     ? "Processing"
                     : Number(allowance.toString()) <
                       Number(ethers.utils.parseEther(amount || "0") ?? 0)
-                    ? "Approve"
+                    ? "Deposit"
                     : "Deposit"}
                 </button>
               </div>

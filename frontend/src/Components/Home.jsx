@@ -13,9 +13,7 @@ const Home = () => {
       return;
     }
     toast.info("Connect your MetaMask wallet");
-    // setTimeout(() => {
-    //   navigate('/');
-    // }, 2000);
+   
   };
 
   const handleLendClick = () => {
@@ -25,10 +23,6 @@ const Home = () => {
     }
 
     toast.info("Connect your MetaMask wallet");
-
-    // setTimeout(() => {
-    //   navigate('/');
-    // }, 2000);
   };
   return (
     <div className="text-3xl font-extrabold items-center h-full  w-[100%]  flex flex-col mt-[10%]">
