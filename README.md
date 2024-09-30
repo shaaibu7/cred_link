@@ -8,6 +8,8 @@
 
 **CREDLINK** is a decentralized peer-to-peer (P2P) credit financing platform designed to connect small and medium enterprises (SMEs) with lenders. Built as part of a hackathon project, CREDLINK leverages blockchain technology to ensure transparent, secure, and trustless credit transactions between borrowers and lenders. The platform operates via smart contracts to enable seamless credit provision and repayment while implementing safeguards to protect both parties. 
 
+- Project Video
+  https://www.loom.com/share/8ba469e6a6ed4aa3bae0aa287c3135ac
   
 
 ### Key Entities 

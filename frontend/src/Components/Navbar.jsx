@@ -29,7 +29,7 @@ const Navbar = () => {
           </button>
         </Link>
 
-        <div className="hidden md:block">
+        <div className="hidden md:block ">
           <img src={Line} alt="line image" />
         </div>
 
@@ -37,6 +37,8 @@ const Navbar = () => {
 
         {isConnected ? (
           <p className="">
+          <p className="text-white w-48 h-11 flex flex-row items-center justify-center rounded-3xl border-[#7AAFFF] border-2">
+            <img src={Metamask}  className="w-6 h-6" />
             {address.slice(0, 5)}... {address.slice(-5)}
           </p>
         ) : (
