@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { Circles } from "react-loader-spinner";
 
 
-const contractAddress = "0x422da85a9D29d9888d33e5a6B5DaA27206bB592E";
+const contractAddress = "0x4Be7214824E656C6715c9458287B9012185321D3";
 const tokenAddress = "0x40d58a9B08360945980c4F0539C7AeAc6e3B9D9b";
 const credLinkAbi = [
     {
@@ -655,56 +655,72 @@ const ProvideLoanModal = () => {
     console.log("Loan Amount:", amount);
     // trigger loader
     await deposit(amount);
-    // close loader
-    closeModal(); // Close the modal after submitting
+    
+    closeModal(); 
   };
 
   async function deposit(amount) {
     console.log(amount);
     const { ethereum } = window;
     if (!ethereum) {
-      console.log("create a MetaMask");
-      
-      return
+      console.log("Please install MetaMask");
+      return;
     }
 
-    //request account access
-    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-    const userAddress = accounts[0];
-    console.log(userAddress);
+    // Request account access
+    // const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    // const userAddress = accounts[0];
+    // console.log(userAddress);
 
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-
+    const provider = new ethers.BrowserProvider(ethereum);
+    const signer = await provider.getSigner();
+    console.log()
     console.log(signer);
 
-    const credlinkContract = new ethers.Contract(
-      contractAddress,
-      credLinkAbi,
-      signer
-    );
+    try {
+        // Ensure contractAddress and tokenAddress are valid Ethereum addresses
+        if (!ethers.isAddress(contractAddress) || !ethers.isAddress(tokenAddress)) {
+            throw new Error("Invalid contract or token address.");
+        }
 
-    console.log(credlinkContract);
-    const code = provider.getCode(credlinkContract)
-    console.log(code)
-    
-    const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
-    console.log(tokenContract);
-    
-    amount = ethers.utils.parseUnits(`${amount}`, 18);
+        // Initialize the Credlink contract
+        const credlinkContract = new ethers.Contract(contractAddress, credLinkAbi, signer);
+        console.log(credlinkContract);
 
-    const approve = await tokenContract.approve(contractAddress, amount);
-    await approve.wait();
-    console.log("Token approval successful");
- 
-    const depositTx = await credlinkContract.lenderDeposit(amount, {
-      gasLimit: 1000000
-    });
-    
-    await depositTx.wait();
-  
-    alert("deposit successful");
-  }
+        // // Check if the contract is deployed correctly by getting the bytecode
+        // const code = await provider.getCode(contractAddress);
+        // if (code === "0x") {
+        //     throw new Error("Contract not deployed at the specified address.");
+        // }
+        // console.log("Contract bytecode:", code);
+
+        // Initialize the token contract
+        const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
+        console.log(tokenContract);
+
+        // Convert the amount to the correct format (assuming 18 decimals)
+        const parsedAmount = ethers.parseUnits(`${amount}`, 18);
+
+        // Approve the transaction to spend tokens
+        const approveTx = await tokenContract.approve(contractAddress, parsedAmount);
+        await approveTx.wait();
+        console.log("Token approval successful");
+
+        // Deposit transaction on the Credlink contract
+        const depositTx = await credlinkContract.lenderDeposit(parsedAmount, {
+            gasLimit: 100000, 
+        });
+        
+        await depositTx.wait();
+        console.log("Deposit transaction successful");
+
+        alert("Deposit successful");
+
+    } catch (error) {
+        console.error("Error in deposit process:", error);
+        alert("An error occurred: " + error.message);
+    }
+}
 
   return (
     <div>
@@ -748,8 +764,8 @@ const ProvideLoanModal = () => {
                 </button>
                 {loading &&
                 (<Circles
-                height="80"
-                width="80"
+                height="50"
+                width="100"
                 color="#4fa94d"
                 ariaLabel="circles-loading"
                 wrapperStyle={{}}

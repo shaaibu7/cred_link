@@ -14,7 +14,7 @@ const Navbar = () => {
       try {
         await window.ethereum.request({method: "eth_requestAccounts"});
         navigate('/LenderDAshboard');
-        return new ethers.providers.Web3Provider(window.ethereum);
+        return new ethers.BrowserProvider(window.ethereum);
 
       } catch (err) {
         console.log("errooo:" + err);
