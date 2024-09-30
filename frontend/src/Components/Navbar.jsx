@@ -2,14 +2,14 @@ import MySvgIcon from "../assets/svg/logo.svg";
 import Line from "../assets/svg/Line.svg";
 import Metamask from "../assets/svg/metamask.svg";
 // import { ethers } from "ethers";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAccount, useConnect } from "wagmi";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { connectors, connect } = useConnect();
   const { isConnected, address } = useAccount();
@@ -36,7 +36,7 @@ const Navbar = () => {
         {/* Metamask connect button */}
 
         {isConnected ? (
-          <p>
+          <p className="">
             {address.slice(0, 5)}... {address.slice(-5)}
           </p>
         ) : (
