@@ -41,6 +41,16 @@ const LenderDashboard = () => {
               Source for Loan <img src={vector3} alt="Withdraw Icon" />
             </button>
             </Link>
+            <Link to="/UpdateBalance">
+            <button className="bg-[#584BFF] text-white px-4 py-6 flex items-center gap-2  rounded-3xl">
+            View Available Balance<img src={vector3} alt="Withdraw Icon" />
+            </button>
+            </Link>
+            <Link to="/RepayLoan">
+            <button className="bg-[#584BFF] text-white px-4 py-6 flex items-center gap-2  rounded-3xl">
+            Repay Loan<img src={vector3} alt="Withdraw Icon" />
+            </button>
+            </Link>
       </div>
 
     
